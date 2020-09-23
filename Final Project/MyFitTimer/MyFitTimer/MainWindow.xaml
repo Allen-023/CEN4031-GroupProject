@@ -1,0 +1,27 @@
+﻿<Window x:Name="MyFitTimer" x:Class="MyFitTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyFitTimer"
+        mc:Ignorable="d"
+        Title="MyFitTimer" Height="450" Width="500" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="StartTimerButton" Content="Start Timer" Grid.Column="2" HorizontalAlignment="Left" Margin="26,239,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="StartTimerButton_Click" Background="#FFDDDDDD"/>
+        <Button x:Name="EndTimerButton" Content="End Timer" HorizontalAlignment="Left" Margin="156,239,0,0" VerticalAlignment="Top" Width="75" Click="EndTimerButton_Click" Height="20" Grid.Column="2"/>
+        <TextBox x:Name="ElapsedTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="111,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" IsReadOnly="True"/>
+        <DataGrid x:Name="ResultsDataGrid" HorizontalAlignment="Left" Height="226" Margin="273,92,0,0" VerticalAlignment="Top" Width="171" Grid.Column="2"/>
+        <Button x:Name="ResetElapsedTimerTextBoxButton" Content="Reset Timer" HorizontalAlignment="Left" Margin="93,280,0,0" VerticalAlignment="Top" Width="75" Click="ResetElapsedTimerTextBoxButton_Click" Height="20" Grid.Column="2" RenderTransformOrigin="1.011,1.679"/>
+        <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,148,0,0" TextWrapping="Wrap" Text="Elapsed Time:" VerticalAlignment="Top"/>
+        <Button x:Name="ResetResultsDataGrid_DB" Grid.ColumnSpan="3" Content="Reset Past Results" HorizontalAlignment="Left" Margin="302,336,0,0" VerticalAlignment="Top" Width="105" Click="ResetResultsDataGrid_DB_Click"/>
+        <TextBlock x:Name="PromptTextBox" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="190,19,0,0" TextWrapping="Wrap" Text="Enjoy your timer!" VerticalAlignment="Top"/>
+        <TextBlock x:Name="PastResultTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="328,71,0,0" TextWrapping="Wrap" Text="Past Results" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
