@@ -8,17 +8,22 @@ namespace MyFitTimer.Concrete
 {
     public class Timer : ITimer
     {
-        public void DeleteTimerRuns()
+        public Timer()
+        {
+
+        }
+
+        public void DeleteResults()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TimerRuns>> GetTimerRuns()
+        public Task<List<Results>> GetResults()
         {
-            List<TimerRuns> timerRuns = new List<TimerRuns>();
+            List<Results> timerRuns = new List<Results>();
 
-            TimerRuns firstRun = new TimerRuns();
-            TimerRuns secondRun = new TimerRuns();
+            Results firstRun = new Results();
+            Results secondRun = new Results();
 
             timerRuns.Add(firstRun);
             timerRuns.Add(secondRun); 
@@ -26,7 +31,7 @@ namespace MyFitTimer.Concrete
             return Task.FromResult(timerRuns); 
         }
 
-        public void SaveTimerRuns()
+        public void SaveResults()
         {
             throw new NotImplementedException();
         }       

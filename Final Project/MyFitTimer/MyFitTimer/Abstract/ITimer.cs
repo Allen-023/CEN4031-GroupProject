@@ -8,9 +8,9 @@ namespace MyFitTimer
 {
     public interface ITimer
     {
-        Task<List<TimerRuns>> GetTimerRuns();
-        void SaveTimerRuns();
-        void DeleteTimerRuns(); 
+        Task<List<Results>> GetResults();
+        void SaveResults();
+        void DeleteResults(); 
 
     }
 }
