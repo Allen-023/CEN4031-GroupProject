@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace MyFitTimer.Concrete
 {
-    public class Timer : ITimer
+    public class StopwatchTracker : IStopwatchTracker
     {
         // generic constructor for timer class
-        public Timer()
+        public StopwatchTracker()
         {
 
         }

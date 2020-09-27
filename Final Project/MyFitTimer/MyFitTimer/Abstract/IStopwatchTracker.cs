@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace MyFitTimer
 {
     // interface for timer class
-    public interface ITimer
+    public interface IStopwatchTracker
     {
         Task<List<Results>> GetResults();
         void SaveResults();

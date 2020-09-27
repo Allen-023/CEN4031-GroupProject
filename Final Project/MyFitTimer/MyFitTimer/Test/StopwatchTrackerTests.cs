@@ -5,15 +5,15 @@ using MyFitTimer.Concrete;
 namespace MyFitTimer.Test
 {
     [TestClass]
-    public class TimerTests
+    public class StopwatchTrackerTests
     {
-        private static ITimer _timer; 
+        private static IStopwatchTracker _timer; 
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            _timer = Substitute.For<ITimer>();
-            _timer = new Timer(); 
+            _timer = Substitute.For<IStopwatchTracker>();
+            _timer = new StopwatchTracker(); 
         }
 
         [TestMethod]
