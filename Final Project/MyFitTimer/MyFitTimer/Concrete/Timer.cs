@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFitTimer.Concrete
 {
     public class Timer : ITimer
     {
+        // generic constructor for timer class
         public Timer()
         {
 
         }
 
+        // method for deleting results
         public void DeleteResults()
         {
             throw new NotImplementedException();
         }
 
+        // method for getting results 
         public Task<List<Results>> GetResults()
         {
             List<Results> timerRuns = new List<Results>();
@@ -31,6 +32,7 @@ namespace MyFitTimer.Concrete
             return Task.FromResult(timerRuns); 
         }
 
+        // method for saving results
         public void SaveResults()
         {
             throw new NotImplementedException();
