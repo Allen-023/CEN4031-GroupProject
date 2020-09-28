@@ -12,12 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
+using System.Diagnostics;
 
 namespace MyFitTimer
 {
-   
+
     public partial class MainWindow : Window
     {
+
 
 
         public MainWindow()
@@ -25,28 +28,33 @@ namespace MyFitTimer
             InitializeComponent();
         }
 
+        //Stopwatch
+        private Stopwatch stopwatch;
 
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            //Calls StopwatchTracker Class to initiate timer
+            //Initiate timer
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            ElapsedTimeTextBox.Text = "Started Timer!";
 
-            //StopwatchTracker stopwatch = new StopwatchTracker();
-            //stopwatch.StartTimer();
-            
-            
+
+
         }
 
         private void EndTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            //Calls StopwatchTracker Class to end timer
-            //StopwatchTracker.StopTimer();
-            
+            //End timer and show elapsed time
+            stopwatch.Stop();
+            ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString();
+
 
         }
 
         private void ResetElapsedTimerTextBoxButton_Click(object sender, RoutedEventArgs e)
         {
             //Reset elapsed time textbox
+            stopwatch.Stop();
             ElapsedTimeTextBox.Text = "";
 
 
@@ -54,7 +62,7 @@ namespace MyFitTimer
 
         private void ResetResultsDataGrid_DB_Click(object sender, RoutedEventArgs e)
         {
-            //Calls StopwatchTracker Class to reset the db. Resets datagridview also.
+            //Reset the db. Resets datagridview.
             ResultsDataGrid.DataContext = null;
 
         }
