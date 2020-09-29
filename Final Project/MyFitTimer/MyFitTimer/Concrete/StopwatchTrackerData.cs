@@ -19,8 +19,21 @@ namespace MyFitTimer.Concrete
         {
             List<Results> timerRuns = new List<Results>();
 
-            Results firstRun = new Results();
-            Results secondRun = new Results();
+            DateTime TempStartTime = DateTime.Now;
+
+            Results firstRun = new Results()
+            {
+                StartTime = TempStartTime.AddHours(-1),
+                EndTime = TempStartTime,
+                TotalTime = new TimeSpan(TempStartTime.Ticks - TempStartTime.AddHours(-1).Ticks)
+            };
+
+            Results secondRun = new Results()
+            {
+                StartTime = TempStartTime.AddHours(-2).AddDays(-1),
+                EndTime = TempStartTime.AddHours(-1).AddDays(-1).AddMinutes(10),
+                TotalTime = new TimeSpan(TempStartTime.AddHours(-1).AddDays(-1).AddMinutes(10).Ticks - TempStartTime.AddHours(-2).AddDays(-1).Ticks)
+            }; 
 
             timerRuns.Add(firstRun);
             timerRuns.Add(secondRun);

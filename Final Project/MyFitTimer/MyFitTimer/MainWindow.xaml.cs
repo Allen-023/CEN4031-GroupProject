@@ -14,16 +14,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
 using System.Diagnostics;
+using MyFitTimer.Concrete;
+using MyFitTimer.Abstract;
 
 namespace MyFitTimer
 {
 
     public partial class MainWindow : Window
     {
+        private readonly IStopwatchTrackerData _stopWatchTrackerData = new StopwatchTrackerData(); 
 
         public MainWindow()
         {
             InitializeComponent();
+
+            StopwatchTracker stopWatchTracker = new StopwatchTracker(_stopWatchTrackerData); 
+            List<Results> results = stopWatchTracker.GetResults().Result;
+            ResultsDataGrid.DataContext = results; 
         }
 
         //Stopwatch
