@@ -18,10 +18,11 @@
         <TextBox x:Name="ElapsedTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="111,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" IsReadOnly="True"/>
         <DataGrid x:Name="ResultsDataGrid" HorizontalAlignment="Left" Height="226" Margin="273,92,0,0" VerticalAlignment="Top" Width="171" Grid.Column="2"/>
         <Button x:Name="ResetElapsedTimerTextBoxButton" Content="Reset Timer" HorizontalAlignment="Left" Margin="93,280,0,0" VerticalAlignment="Top" Width="75" Click="ResetElapsedTimerTextBoxButton_Click" Height="20" Grid.Column="2" RenderTransformOrigin="1.011,1.679"/>
-        <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,148,0,0" TextWrapping="Wrap" Text="Elapsed Time:" VerticalAlignment="Top"/>
-        <Button x:Name="ResetResultsDataGrid_DB" Grid.ColumnSpan="3" Content="Reset Past Results" HorizontalAlignment="Left" Margin="302,336,0,0" VerticalAlignment="Top" Width="105" Click="ResetResultsDataGrid_DB_Click"/>
+        <TextBlock x:Name="ElaspedTimeTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,148,0,0" TextWrapping="Wrap" Text="Elapsed Time:" VerticalAlignment="Top"/>
+        <Button x:Name="ResetResultsDataGrid_DB" Grid.ColumnSpan="3" Content="Reset Past Results" HorizontalAlignment="Left" Margin="306,323,0,0" VerticalAlignment="Top" Width="105" Click="ResetResultsDataGrid_DB_Click"/>
         <TextBlock x:Name="PromptTextBox" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="190,19,0,0" TextWrapping="Wrap" Text="Enjoy your timer!" VerticalAlignment="Top"/>
         <TextBlock x:Name="PastResultTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="328,71,0,0" TextWrapping="Wrap" Text="Past Results" VerticalAlignment="Top"/>
+        <TextBlock x:Name="formatTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,164,0,0" TextWrapping="Wrap" Text="  (mm:ss.ms)" VerticalAlignment="Top" Width="72"/>
 
     </Grid>
 </Window>

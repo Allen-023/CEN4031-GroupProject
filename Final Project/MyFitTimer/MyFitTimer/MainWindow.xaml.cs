@@ -21,8 +21,6 @@ namespace MyFitTimer
     public partial class MainWindow : Window
     {
 
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -38,16 +36,13 @@ namespace MyFitTimer
             stopwatch.Start();
             ElapsedTimeTextBox.Text = "Started Timer!";
 
-
-
         }
 
         private void EndTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            //End timer and show elapsed time
+            //End timer and show elapsed time in minutes, seconds, mili
             stopwatch.Stop();
-            ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString();
-
+            ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString("mm\\:ss\\.ff");
 
         }
 
@@ -56,7 +51,6 @@ namespace MyFitTimer
             //Reset elapsed time textbox
             stopwatch.Stop();
             ElapsedTimeTextBox.Text = "";
-
 
         }
 
