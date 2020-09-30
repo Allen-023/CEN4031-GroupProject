@@ -22,13 +22,13 @@ namespace MyFitTimer
 
     public partial class MainWindow : Window
     {
-        private readonly IStopwatchTrackerData _stopWatchTrackerData = new StopwatchTrackerData(); 
+        private static IStopwatchTrackerData _stopWatchTrackerData = new StopwatchTrackerData();
+        private StopwatchTracker stopWatchTracker = new StopwatchTracker(_stopWatchTrackerData);
 
         public MainWindow()
         {
             InitializeComponent();
 
-            StopwatchTracker stopWatchTracker = new StopwatchTracker(_stopWatchTrackerData); 
             List<Results> results = stopWatchTracker.GetResults().Result;
             ResultsDataGrid.DataContext = results; 
         }
