@@ -38,34 +38,49 @@ namespace MyFitTimer
 
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            //Initiate timer
+            //Initiate stopwatch
             stopwatch = new Stopwatch();
             stopwatch.Start();
-            ElapsedTimeTextBox.Text = "Started Timer!";
 
+            //Prompt user
+            ElapsedTimeTextBox.Text = "Started Timer!";
         }
 
         private void EndTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            //End timer and show elapsed time in minutes, seconds, mili
-            stopwatch.Stop();
-            ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString("mm\\:ss\\.ff");
+            //Checks to see if stopwatch is running
+            if(stopwatch != null)
+            {
+                //End timer and show elapsed time in minutes, seconds, mili
+                stopwatch.Stop();
+                ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString("mm\\:ss\\.ff");
 
+                //stopWatchTracker.SaveResults();*****
+
+                //Repopulates datagridview with saved results
+                List<Results> results = stopWatchTracker.GetResults().Result;
+                ResultsDataGrid.DataContext = results;
+            }
         }
 
         private void ResetElapsedTimerTextBoxButton_Click(object sender, RoutedEventArgs e)
         {
+            //Checks to see if stopwatch is running
             //Reset elapsed time textbox
-            stopwatch.Stop();
-            ElapsedTimeTextBox.Text = "";
-
+            if (stopwatch != null)
+            {
+                stopwatch.Stop();
+                ElapsedTimeTextBox.Text = "";
+            }
         }
 
         private void ResetResultsDataGrid_DB_Click(object sender, RoutedEventArgs e)
         {
-            //Reset the db. Resets datagridview.
+            //Resets datagridview.
             ResultsDataGrid.DataContext = null;
 
+            //Delete db 
+            //stopWatchTracker.DeleteResults();*****
         }
     }
 }
