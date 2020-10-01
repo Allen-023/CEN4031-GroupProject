@@ -1,6 +1,7 @@
 ﻿using MyFitTimer.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MyFitTimer.Concrete
@@ -22,15 +23,15 @@ namespace MyFitTimer.Concrete
         }
 
         // method for getting results 
-        public Task<List<Results>> GetResults()
+        public Task<List<ResultsContext>> GetResults()
         {
             return _stopwatchTrackerData.GetResults();  
         }
 
         // method for saving results
-        public void SaveResults()
+        public void SaveResults(Stopwatch stopwatch)
         {
-            _stopwatchTrackerData.SaveResults(); 
-        }       
+            _stopwatchTrackerData.SaveResults(stopwatch); 
+        }
     }
 }

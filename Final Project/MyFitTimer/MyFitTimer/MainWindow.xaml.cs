@@ -29,8 +29,8 @@ namespace MyFitTimer
         {
             InitializeComponent();
 
-            List<Results> results = stopWatchTracker.GetResults().Result;
-            ResultsDataGrid.DataContext = results; 
+            List<ResultsContext> results = stopWatchTracker.GetResults().Result;
+            ResultsDataGrid.DataContext = BuildTimeList(results); 
         }
 
         //Stopwatch
@@ -53,13 +53,14 @@ namespace MyFitTimer
             {
                 //End timer and show elapsed time in minutes, seconds, mili
                 stopwatch.Stop();
-                ElapsedTimeTextBox.Text = stopwatch.Elapsed.ToString("mm\\:ss\\.ff");
+                var elapsed =  stopwatch.Elapsed.ToString("mm\\:ss\\.ff");
+                ElapsedTimeTextBox.Text = elapsed;
 
-                //stopWatchTracker.SaveResults();*****
+                stopWatchTracker.SaveResults(stopwatch);
 
                 //Repopulates datagridview with saved results
-                List<Results> results = stopWatchTracker.GetResults().Result;
-                ResultsDataGrid.DataContext = results;
+                List<ResultsContext> results = stopWatchTracker.GetResults().Result;
+                ResultsDataGrid.DataContext = BuildTimeList(results);
             }
         }
 
@@ -80,7 +81,21 @@ namespace MyFitTimer
             ResultsDataGrid.DataContext = null;
 
             //Delete db 
-            //stopWatchTracker.DeleteResults();*****
+            stopWatchTracker.DeleteResults();
+        }
+
+        public List<Time> BuildTimeList(List<ResultsContext> results)
+        {
+            Time timedItem = new Time();
+            List<Time> timeList = new List<Time>();
+            foreach (var t in results.FirstOrDefault().Times)
+            {
+                timedItem.StartTime = t.StartTime;
+                timedItem.EndTime = t.EndTime;
+                timedItem.TotalTime = t.TotalTime;
+                timeList.Add(timedItem);
+            }
+            return timeList;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MyFitTimer
@@ -6,8 +7,8 @@ namespace MyFitTimer
     // interface for timer class
     public interface IStopwatchTracker
     {
-        Task<List<Results>> GetResults();
-        void SaveResults();
+        Task<List<ResultsContext>> GetResults();
+        void SaveResults(Stopwatch stopwatch);
         void DeleteResults(); 
     }
 }

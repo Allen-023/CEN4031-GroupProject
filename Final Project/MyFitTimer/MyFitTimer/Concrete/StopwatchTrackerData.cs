@@ -1,6 +1,7 @@
 ﻿using MyFitTimer.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,40 +12,57 @@ namespace MyFitTimer.Concrete
     {
         public void DeleteResults()
         {
-            throw new NotImplementedException();
+            using (var db = new ResultsContext())
+            {
+                Console.WriteLine("Deleting the times");
+                var times = db.Times
+                    .OrderBy(b => b.StartTime);
+                foreach(var time in times)
+                {
+                    db.Remove(time);
+                }
+                db.SaveChanges();
+            }
         }
 
         // method for getting results 
-        public Task<List<Results>> GetResults()
+        public Task<List<ResultsContext>> GetResults()
         {
-            List<Results> timerRuns = new List<Results>();
-
+            List<ResultsContext> timerRuns = new List<ResultsContext>();
             DateTime TempStartTime = DateTime.Now;
+            using (var db = new ResultsContext())
+            {   
+                //read
+                Console.WriteLine("Querying for times");
+                var times = db.Times
+                    .OrderBy(b => b.StartTime);
 
-            Results firstRun = new Results()
-            {
-                StartTime = TempStartTime.AddHours(-1),
-                EndTime = TempStartTime,
-                TotalTime = new TimeSpan(TempStartTime.Ticks - TempStartTime.AddHours(-1).Ticks)
-            };
+                foreach (var time in times)
+                {
+                    ResultsContext run = new ResultsContext();
+                    Time timedItem = new Time();
+                    timedItem.StartTime = time.StartTime;
+                    timedItem.EndTime = time.EndTime;
+                    timedItem.TotalTime = time.TotalTime;
+                    run.Times.Add(timedItem);
 
-            Results secondRun = new Results()
-            {
-                StartTime = TempStartTime.AddHours(-2).AddDays(-1),
-                EndTime = TempStartTime.AddHours(-1).AddDays(-1).AddMinutes(10),
-                TotalTime = new TimeSpan(TempStartTime.AddHours(-1).AddDays(-1).AddMinutes(10).Ticks - TempStartTime.AddHours(-2).AddDays(-1).Ticks)
-            }; 
-
-            timerRuns.Add(firstRun);
-            timerRuns.Add(secondRun);
+                    timerRuns.Add(run);
+                }
+            }
 
             return Task.FromResult(timerRuns);
         }
 
         // method for saving results
-        public void SaveResults()
+        public void SaveResults(Stopwatch stopwatch)
         {
-            throw new NotImplementedException();
+            using (var db = new ResultsContext())
+            {
+                //write
+                var timeEntry = new Time { StartTime = DateTime.Now - stopwatch.Elapsed, EndTime = DateTime.Now, TotalTime = stopwatch.Elapsed };
+                db.Add(timeEntry);
+                db.SaveChanges();
+            }
         }
     }
 }
