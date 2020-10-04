@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFitTimer.Concrete
@@ -26,31 +25,19 @@ namespace MyFitTimer.Concrete
         }
 
         // method for getting results 
-        public Task<List<ResultsContext>> GetResults()
+        public Task<List<Time>> GetResults()
         {
-            List<ResultsContext> timerRuns = new List<ResultsContext>();
-            DateTime TempStartTime = DateTime.Now;
+            List<Time> dbResults = new List<Time>(); 
             using (var db = new ResultsContext())
             {   
                 //read
                 Console.WriteLine("Querying for times");
-                var times = db.Times
-                    .OrderBy(b => b.StartTime);
 
-                foreach (var time in times)
-                {
-                    ResultsContext run = new ResultsContext();
-                    Time timedItem = new Time();
-                    timedItem.StartTime = time.StartTime;
-                    timedItem.EndTime = time.EndTime;
-                    timedItem.TotalTime = time.TotalTime;
-                    run.Times.Add(timedItem);
-
-                    timerRuns.Add(run);
-                }
+                dbResults = db.Times
+                    .OrderBy(b => b.StartTime).ToList();
             }
 
-            return Task.FromResult(timerRuns);
+            return Task.FromResult(dbResults);
         }
 
         // method for saving results

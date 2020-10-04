@@ -1,5 +1,4 @@
 ﻿using MyFitTimer.Abstract;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -23,7 +22,7 @@ namespace MyFitTimer.Concrete
         }
 
         // method for getting results 
-        public Task<List<ResultsContext>> GetResults()
+        public Task<List<Time>> GetResults()
         {
             return _stopwatchTrackerData.GetResults();  
         }

@@ -1,8 +1,5 @@
-﻿using Castle.Components.DictionaryAdapter;
-using Microsoft.EntityFrameworkCore;
-using SQLite;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace MyFitTimer

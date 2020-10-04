@@ -7,7 +7,7 @@ namespace MyFitTimer
     // interface for timer class
     public interface IStopwatchTracker
     {
-        Task<List<ResultsContext>> GetResults();
+        Task<List<Time>> GetResults();
         void SaveResults(Stopwatch stopwatch);
         void DeleteResults(); 
     }

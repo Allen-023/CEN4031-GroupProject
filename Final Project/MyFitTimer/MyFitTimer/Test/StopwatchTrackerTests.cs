@@ -12,7 +12,7 @@ namespace MyFitTimer.Test
         private static IStopwatchTrackerData _stopwatchTrackerData;
 
         [ClassInitialize]
-        public static void ClassInitialize(TestContext testContext)
+        public static void ClassInitialize()
         {
             _timer = Substitute.For<IStopwatchTracker>();
             _stopwatchTrackerData = Substitute.For<IStopwatchTrackerData>(); 
