@@ -2,6 +2,11 @@
 using NSubstitute;
 using MyFitTimer.Concrete;
 using MyFitTimer.Abstract;
+using System.Windows.Documents;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using NSubstitute.Extensions;
+using System.Diagnostics;
 
 namespace MyFitTimer.Test
 {
@@ -12,7 +17,7 @@ namespace MyFitTimer.Test
         private static IStopwatchTrackerData _stopwatchTrackerData;
 
         [ClassInitialize]
-        public static void ClassInitialize()
+        public static void ClassInitialize(TestContext testContext)
         {
             _timer = Substitute.For<IStopwatchTracker>();
             _stopwatchTrackerData = Substitute.For<IStopwatchTrackerData>(); 
@@ -21,24 +26,13 @@ namespace MyFitTimer.Test
         }
 
         [TestMethod]
-        public void GetResultsReturnsCorrectType()
+        public void GetResultsDoesNotReturnNull()
         {
+            _stopwatchTrackerData.GetResults()
+                .Returns(new List<Time>()); 
+
             var results = _timer.GetResults(); 
-            Assert.AreEqual(0, 0);
-        }
-
-        [TestMethod]
-        public void SaveResultsRetunrsVoid()
-        {
-           // _timer.SaveResults();
-            Assert.AreEqual(0, 0); 
-        }
-
-        [TestMethod]
-        public void DeleteResultsReturnsVoid()
-        {
-            _timer.DeleteResults(); 
-            Assert.AreEqual(0, 0);
+            Assert.IsNotNull(results);
         }
     }
 }
