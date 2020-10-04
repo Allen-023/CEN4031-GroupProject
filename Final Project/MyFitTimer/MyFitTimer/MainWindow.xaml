@@ -7,22 +7,52 @@
         mc:Ignorable="d"
         Title="MyFitTimer" Height="450" Width="678" WindowStyle="ThreeDBorderWindow">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFB3B7B8" Offset="0.927"/>
+                <GradientStop Color="#FF48BABF" Offset="0.373"/>
+                <GradientStop Color="#FF9DDBEE" Offset="0.633"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="StartTimerButton" Content="Start Timer" Grid.Column="2" HorizontalAlignment="Left" Margin="26,239,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="StartTimerButton_Click" Background="#FFDDDDDD"/>
-        <Button x:Name="EndTimerButton" Content="End Timer" HorizontalAlignment="Left" Margin="156,239,0,0" VerticalAlignment="Top" Width="75" Click="EndTimerButton_Click" Height="20" Grid.Column="2"/>
-        <TextBox x:Name="ElapsedTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="111,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" IsReadOnly="True"/>
-        <DataGrid ItemsSource="{Binding}" x:Name="ResultsDataGrid" HorizontalAlignment="Left" Height="226" Margin="273,92,0,0" VerticalAlignment="Top" Width="366" Grid.Column="2"/>
-        <Button x:Name="ResetElapsedTimerTextBoxButton" Content="Reset Timer" HorizontalAlignment="Left" Margin="93,280,0,0" VerticalAlignment="Top" Width="75" Click="ResetElapsedTimerTextBoxButton_Click" Height="20" Grid.Column="2" RenderTransformOrigin="1.011,1.679"/>
-        <TextBlock x:Name="ElaspedTimeTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,148,0,0" TextWrapping="Wrap" Text="Elapsed Time:" VerticalAlignment="Top"/>
-        <Button x:Name="ResetResultsDataGrid_DB" Grid.ColumnSpan="3" Content="Reset Past Results" HorizontalAlignment="Left" Margin="382,323,0,0" VerticalAlignment="Top" Width="105" Click="ResetResultsDataGrid_DB_Click"/>
-        <TextBlock x:Name="PromptTextBox" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="111,62,0,0" TextWrapping="Wrap" Text="Enjoy your timer!" VerticalAlignment="Top"/>
-        <TextBlock x:Name="PastResultTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="400,62,0,0" TextWrapping="Wrap" Text="Past Results" VerticalAlignment="Top"/>
-        <TextBlock x:Name="formatTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,164,0,0" TextWrapping="Wrap" Text="  (mm:ss.ms)" VerticalAlignment="Top" Width="72"/>
+        <Button x:Name="StartTimerButton" Content="Start Timer" Grid.Column="2" HorizontalAlignment="Left" Margin="26,239,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="StartTimerButton_Click" Background="#FFDDDDDD" FontFamily="Arial">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="EndTimerButton" Content="Stop Timer" HorizontalAlignment="Left" Margin="156,239,0,0" VerticalAlignment="Top" Width="75" Click="EndTimerButton_Click" Height="20" Grid.Column="2" FontFamily="Arial">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBox x:Name="ElapsedTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="111,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" IsReadOnly="True" RenderTransformOrigin="0.492,1.609" FontFamily="Arial">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <DataGrid ItemsSource="{Binding}" x:Name="ResultsDataGrid" HorizontalAlignment="Left" Height="226" Margin="273,92,0,0" VerticalAlignment="Top" Width="363" Grid.Column="2" FontFamily="Arial">
+            <DataGrid.Effect>
+                <DropShadowEffect/>
+            </DataGrid.Effect>
+        </DataGrid>
+        <Button x:Name="ResetElapsedTimerTextBoxButton" Content="Reset Timer" HorizontalAlignment="Left" Margin="89,276,0,0" VerticalAlignment="Top" Width="75" Click="ResetElapsedTimerTextBoxButton_Click" Height="20" Grid.Column="2" RenderTransformOrigin="1.011,1.679" FontFamily="Arial">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock x:Name="ElaspedTimeTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,148,0,0" TextWrapping="Wrap" Text="Elapsed Time:" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Button x:Name="ResetResultsDataGrid_DB" Grid.ColumnSpan="3" Content="Reset Past Results" HorizontalAlignment="Left" Margin="401,332,0,0" VerticalAlignment="Top" Width="105" Click="ResetResultsDataGrid_DB_Click" FontFamily="Arial">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock x:Name="PastResultTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="415,59,0,0" TextWrapping="Wrap" Text="Past Results:" VerticalAlignment="Top" TextDecorations="{x:Null}" FontFamily="Arial" FontSize="14"/>
+        <TextBlock x:Name="formatTextBlock" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="26,164,0,0" TextWrapping="Wrap" Text="  (mm:ss.ms)" VerticalAlignment="Top" Width="72" FontFamily="Arial"/>
 
     </Grid>
 </Window>

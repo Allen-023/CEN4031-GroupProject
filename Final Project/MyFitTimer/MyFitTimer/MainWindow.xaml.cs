@@ -23,6 +23,8 @@ namespace MyFitTimer
         //Stopwatch
         private Stopwatch stopwatch;
 
+        private bool flag;
+
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
         {
             //Initiate stopwatch
@@ -31,12 +33,14 @@ namespace MyFitTimer
 
             //Prompt user
             ElapsedTimeTextBox.Text = "Started Timer!";
+
+            flag = true;
         }
 
         private void EndTimerButton_Click(object sender, RoutedEventArgs e)
         {
             //Checks to see if stopwatch is running
-            if(stopwatch != null)
+            if(stopwatch != null && flag == true)
             {
                 //End timer and show elapsed time in minutes, seconds, mili
                 stopwatch.Stop();
@@ -48,6 +52,9 @@ namespace MyFitTimer
                 //Repopulates datagridview with saved results
                 List<Time> results = stopWatchTracker.GetResults().Result;
                 ResultsDataGrid.DataContext = results;
+
+                //Prevents repeated end clicks
+                flag = false;
             }
         }
 
@@ -66,6 +73,8 @@ namespace MyFitTimer
         {
             //Resets datagridview.
             ResultsDataGrid.DataContext = null;
+
+            ElapsedTimeTextBox.Text = "";
 
             //Delete db 
             stopWatchTracker.DeleteResults();
